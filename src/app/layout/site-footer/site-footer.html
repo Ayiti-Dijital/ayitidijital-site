@@ -1,0 +1,78 @@
+<footer class="mt-16 border-t border-line bg-white text-muted">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <div>
+      <a routerLink="/" class="inline-block rounded-lg" aria-label="Ayiti Dijital – paj dakèy">
+        <img
+          src="brand/lockup-h-light.svg"
+          alt="Ayiti Dijital"
+          width="216"
+          height="60"
+          class="h-auto w-54"
+        />
+      </a>
+      <p class="mt-4 max-w-xs text-sm leading-relaxed">
+        Ayiti Dijital se yon asosyasyon san bi likratif ki bati enfrastrikti dijital louvri pou
+        Ayiti, an Kreyòl ak an Fransè.
+      </p>
+    </div>
+
+    <nav aria-labelledby="pye-pwoje">
+      <h2 id="pye-pwoje" class="text-xs font-semibold tracking-[0.18em] text-text uppercase">
+        Pwojè
+      </h2>
+      <ul class="mt-3 space-y-1 text-sm">
+        <li>
+          <a [href]="diksyoneUrl" class="inline-block py-1 hover:text-link">Diksyonè Kreyòl</a>
+        </li>
+        <li>
+          <a [href]="diksyoneUrl + '/jwet'" class="inline-block py-1 hover:text-link"
+            >Jwèt Kreyòl</a
+          >
+        </li>
+        <li>
+          <a [href]="ttsRepoUrl" class="inline-block py-1 hover:text-link">Vwa Wanga Nègès</a>
+        </li>
+        <li><a [href]="lexhaitiUrl" class="inline-block py-1 hover:text-link">LexHaïti</a></li>
+      </ul>
+    </nav>
+
+    <nav aria-labelledby="pye-kontak">
+      <h2 id="pye-kontak" class="text-xs font-semibold tracking-[0.18em] text-text uppercase">
+        Kontak
+      </h2>
+      <ul class="mt-3 space-y-1 text-sm">
+        <li>
+          <a [href]="contactHref" class="inline-block py-1 break-all hover:text-link">{{
+            contactEmail
+          }}</a>
+        </li>
+        <li>
+          <a [href]="repoUrl" class="inline-block py-1 hover:text-link">Kòd sit la sou GitHub</a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav aria-labelledby="pye-legal">
+      <h2 id="pye-legal" class="text-xs font-semibold tracking-[0.18em] text-text uppercase">
+        Legal
+      </h2>
+      <ul class="mt-3 space-y-1 text-sm">
+        <li>
+          <a routerLink="/enfomasyon-legal" class="inline-block py-1 hover:text-link"
+            >Enfòmasyon legal</a
+          >
+        </li>
+        <li>
+          <a routerLink="/konfidansyalite" class="inline-block py-1 hover:text-link"
+            >Konfidansyalite</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="border-t border-line">
+    <p class="mx-auto max-w-6xl px-4 py-5 text-xs sm:px-6">
+      © 2026 Ayiti Dijital e.V. · Tèks: CC BY-SA 4.0 · Kòd: Apache-2.0
+    </p>
+  </div>
+</footer>

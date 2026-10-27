@@ -1,0 +1,230 @@
+<h1 class="sr-only">Ayiti Dijital – diksyonè, jwèt ak zouti pou lang Kreyòl la</h1>
+
+<div class="mx-auto max-w-6xl space-y-16 px-4 pt-10 sm:px-6">
+  <!-- Dictionary -->
+  <section aria-labelledby="diksyone-tit">
+    <ad-section-title icon="az" headingId="diksyone-tit">Diksyonè Kreyòl</ad-section-title>
+    <ul class="grid gap-6 md:grid-cols-3">
+      @for (tile of dictionary; track tile.title) {
+        <li>
+          <a
+            [href]="tile.href"
+            class="card flex h-full flex-col items-center p-8 text-center hover:ring-2 hover:ring-link/30"
+          >
+            <ad-icon [name]="tile.icon" class="size-12 text-link" />
+            <h3 class="mt-4 text-lg font-semibold tracking-wide text-link uppercase">
+              {{ tile.title }}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed">{{ tile.text }}</p>
+          </a>
+        </li>
+      }
+    </ul>
+    <div
+      class="mt-6 flex flex-col items-center gap-4 bg-navy-deep px-6 py-6 text-center text-sand sm:flex-row sm:justify-between sm:text-left"
+    >
+      <p class="text-lg">Ede nou bati premye diksyonè Kreyòl–Kreyòl louvri a.</p>
+      <a
+        [href]="helpHref"
+        class="shrink-0 rounded-full bg-gold px-6 py-2.5 font-semibold text-navy-deep hover:bg-sand"
+        >Ekri nou</a
+      >
+    </div>
+  </section>
+
+  <!-- School dictionaries -->
+  <section aria-labelledby="lekol-tit">
+    <ad-section-title icon="school" headingId="lekol-tit">Diksyonè pou lekòl</ad-section-title>
+    <ul class="grid gap-6 md:grid-cols-3">
+      @for (tile of school; track tile.title) {
+        <li class="card relative flex h-full flex-col items-center p-8 text-center">
+          <span
+            class="absolute top-3 right-3 rounded bg-gold px-2 py-0.5 text-xs font-bold tracking-wider text-navy-deep uppercase"
+            >Byento</span
+          >
+          <ad-icon [name]="tile.icon" class="size-12 text-link" />
+          <h3 class="mt-4 text-lg font-semibold tracking-wide text-link uppercase">
+            {{ tile.title }}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed">{{ tile.text }}</p>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- Bilingual dictionaries -->
+  <section aria-labelledby="bileng-tit">
+    <ad-section-title icon="languages" headingId="bileng-tit">Diksyonè bileng</ad-section-title>
+    <div class="card p-6 sm:p-8">
+      <div role="tablist" aria-label="Direksyon tradiksyon" class="flex justify-center gap-2">
+        <button
+          type="button"
+          role="tab"
+          id="tab-soti"
+          aria-controls="panel-bileng"
+          [attr.aria-selected]="direction() === 'soti'"
+          [attr.tabindex]="direction() === 'soti' ? 0 : -1"
+          (click)="direction.set('soti')"
+          (keydown.arrowRight)="switchTab()"
+          (keydown.arrowLeft)="switchTab()"
+          class="rounded-full px-5 py-2 text-sm font-semibold tracking-wide uppercase"
+          [class]="direction() === 'soti' ? 'bg-link text-white' : 'bg-mist text-ink'"
+        >
+          Kreyòl → lòt lang
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="tab-ale"
+          aria-controls="panel-bileng"
+          [attr.aria-selected]="direction() === 'ale'"
+          [attr.tabindex]="direction() === 'ale' ? 0 : -1"
+          (click)="direction.set('ale')"
+          (keydown.arrowRight)="switchTab()"
+          (keydown.arrowLeft)="switchTab()"
+          class="rounded-full px-5 py-2 text-sm font-semibold tracking-wide uppercase"
+          [class]="direction() === 'ale' ? 'bg-link text-white' : 'bg-mist text-ink'"
+        >
+          Lòt lang → Kreyòl
+        </button>
+      </div>
+      <ul
+        id="panel-bileng"
+        role="tabpanel"
+        [attr.aria-labelledby]="direction() === 'soti' ? 'tab-soti' : 'tab-ale'"
+        class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        @for (pair of pairs(); track pair.code) {
+          <li class="flex items-center gap-3 rounded border border-line px-4 py-3">
+            <span
+              class="grid size-9 shrink-0 place-items-center rounded-full bg-mist text-xs font-bold text-link"
+              >{{ pair.code }}</span
+            >
+            <span class="flex-1 font-medium text-ink">{{ pair.label }}</span>
+            <span class="text-xs font-semibold tracking-wider text-gold-deep uppercase"
+              >Byento</span
+            >
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Encyclopedia -->
+  <section aria-labelledby="ansiklopedi-tit">
+    <ad-section-title icon="globe" headingId="ansiklopedi-tit">Ansiklopedi</ad-section-title>
+    <article class="card grid overflow-hidden md:grid-cols-[1fr_1.4fr]">
+      <div class="grid min-h-48 place-items-center bg-navy-deep p-8">
+        <img src="brand/mark-dark.svg" alt="" width="120" height="120" class="size-28 opacity-90" />
+      </div>
+      <div class="flex flex-col justify-center p-6 sm:p-8">
+        <span class="text-xs font-semibold tracking-[0.18em] text-red uppercase">Byento</span>
+        <h3 class="mt-2 text-2xl font-semibold text-link">Ansiklopedi Ayiti</h3>
+        <p class="mt-2 leading-relaxed">
+          Istwa, jewografi, kilti ak syans, ekri an Kreyòl pou tout moun.
+        </p>
+        <a
+          routerLink="/ansiklopedi"
+          class="mt-4 self-start py-1 font-semibold text-link hover:underline"
+          >Gade tout →</a
+        >
+      </div>
+    </article>
+  </section>
+
+  <!-- Books -->
+  <section aria-labelledby="liv-tit">
+    <ad-section-title icon="books" headingId="liv-tit">Liv</ad-section-title>
+    <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5" aria-label="Liv ki ap vini">
+      @for (slot of bookSlots; track slot) {
+        <li
+          class="card grid aspect-[2/3] place-items-center bg-gradient-to-b from-navy to-navy-deep p-4 text-center text-sand"
+        >
+          <span class="flex flex-col items-center gap-3">
+            <img src="brand/mark-dark.svg" alt="" width="48" height="48" class="size-12" />
+            <span class="text-xs font-semibold tracking-[0.18em] uppercase">Byento</span>
+          </span>
+        </li>
+      }
+    </ul>
+    <p class="mt-4 text-right">
+      <a routerLink="/liv" class="inline-block py-1 font-semibold text-link hover:underline"
+        >Gade tout →</a
+      >
+    </p>
+  </section>
+
+  <!-- Cooking -->
+  <section aria-labelledby="kizin-tit">
+    <ad-section-title icon="pot" headingId="kizin-tit">Kizin</ad-section-title>
+    <ul class="grid gap-6 md:grid-cols-3">
+      @for (dish of dishes; track dish.name) {
+        <li class="card overflow-hidden">
+          <div class="grid h-36 place-items-center bg-sand">
+            <ad-icon name="pot" class="size-14 text-gold-deep" />
+          </div>
+          <div class="p-5">
+            <p class="text-xs font-semibold tracking-[0.18em] text-red uppercase">
+              {{ dish.category }}
+            </p>
+            <h3 class="mt-1 text-lg font-semibold text-link">{{ dish.name }}</h3>
+            <p class="mt-1 text-sm text-muted">Resèt la ap vini byento.</p>
+          </div>
+        </li>
+      }
+    </ul>
+    <p class="mt-4 text-right">
+      <a routerLink="/kizin" class="inline-block py-1 font-semibold text-link hover:underline"
+        >Gade tout →</a
+      >
+    </p>
+  </section>
+
+  <!-- Project news -->
+  <section aria-labelledby="nouvel-tit">
+    <ad-section-title icon="dice" headingId="nouvel-tit">Pwojè Ayiti Dijital</ad-section-title>
+    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      @for (item of news; track item.title) {
+        <li>
+          <a
+            [href]="item.href"
+            class="card flex h-full flex-col overflow-hidden hover:ring-2 hover:ring-link/30"
+          >
+            <span class="grid h-28 place-items-center bg-mist">
+              <ad-icon [name]="item.icon" class="size-12 text-link" />
+            </span>
+            <span class="flex flex-1 flex-col p-5">
+              <h3 class="text-lg font-semibold text-link">{{ item.title }}</h3>
+              <span class="mt-1 text-sm leading-relaxed">{{ item.text }}</span>
+            </span>
+          </a>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- Flashcards -->
+  <section
+    aria-labelledby="flashcard-tit"
+    class="card grid items-center gap-8 p-8 md:grid-cols-[1.4fr_1fr]"
+  >
+    <div>
+      <h2 id="flashcard-tit" class="text-2xl font-semibold tracking-wide text-link uppercase">
+        Flashcard Kreyòl
+      </h2>
+      <p class="mt-3 leading-relaxed">
+        Aprann mo Kreyòl yo ak ti kat: sou yon bò, mo a; sou lòt bò a, sans li. Byento.
+      </p>
+      <a
+        routerLink="/flashcard"
+        class="mt-5 inline-block rounded-full bg-link px-6 py-2.5 font-semibold tracking-wide text-white uppercase hover:bg-navy"
+        >Dekouvri</a
+      >
+    </div>
+    <div class="grid place-items-center">
+      <span class="grid size-40 place-items-center rounded-full bg-mist">
+        <ad-icon name="cards" class="size-20 text-red" />
+      </span>
+    </div>
+  </section>
+</div>

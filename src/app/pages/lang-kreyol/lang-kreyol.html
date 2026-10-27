@@ -1,0 +1,47 @@
+<ad-breadcrumb [items]="crumbs" />
+
+<div class="mx-auto max-w-6xl px-4 sm:px-6">
+  <section class="card mt-2 p-6 sm:p-8" aria-labelledby="tit-paj">
+    <div class="flex items-start gap-4 sm:gap-5">
+      <ad-icon name="az" class="size-12 shrink-0 text-link sm:size-14" />
+      <div>
+        <h1 id="tit-paj" class="text-2xl tracking-wide text-link uppercase sm:text-3xl">
+          Lang Kreyòl
+        </h1>
+        <p class="mt-1 font-medium text-text">
+          Tout zouti Ayiti Dijital pou lang Kreyòl la, sou yon sèl paj.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" aria-label="Zouti pou lang Kreyòl la">
+    @for (tool of tools; track tool.title) {
+      <li>
+        @if (tool.path) {
+          <a
+            [routerLink]="tool.path"
+            class="card flex h-full flex-col items-center p-8 text-center hover:ring-2 hover:ring-link/30"
+          >
+            <ad-icon [name]="tool.icon" class="size-12 text-link" />
+            <h2 class="mt-4 text-lg font-semibold tracking-wide text-link uppercase">
+              {{ tool.title }}
+            </h2>
+            <p class="mt-2 text-sm leading-relaxed">{{ tool.text }}</p>
+          </a>
+        } @else {
+          <a
+            [href]="tool.href"
+            class="card flex h-full flex-col items-center p-8 text-center hover:ring-2 hover:ring-link/30"
+          >
+            <ad-icon [name]="tool.icon" class="size-12 text-link" />
+            <h2 class="mt-4 text-lg font-semibold tracking-wide text-link uppercase">
+              {{ tool.title }}
+            </h2>
+            <p class="mt-2 text-sm leading-relaxed">{{ tool.text }}</p>
+          </a>
+        }
+      </li>
+    }
+  </ul>
+</div>
